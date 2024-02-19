@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porsche Rechner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card {
+      cursor: pointer;
+    }
+    .card.selected {
+      border: 2px solid #28a745;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Porsche Rechner</h1>
+    <form id="porscheForm">
+      <div class="form-group">
+        <label for="monthlyIncome">Monatliches Einkommen (in Euro)</label>
+        <input type="number" class="form-control" id="monthlyIncome" required>
+      </div>
+      <div class="form-group">
+        <label for="monthlyExpenses">Monatliche Ausgaben (in Euro)</label>
+        <input type="number" class="form-control" id="monthlyExpenses" required>
+      </div>
+      <div class="form-group">
+        <label>Porsche Typ auswählen</label>
+        <div class="card-deck">
+          <div class="card" onclick="selectPorsche('newPorsche')">
+            <img src="new.jpg" class="card-img-top" alt="Neuer Porsche">
+            <div class="card-body">
+              <input type="radio" id="newPorsche" name="porscheType" value="new" required>
+              <label class="card-title" for="newPorsche">Neuer Porsche (200000€)</label>
+            </div>
+          </div>
+          <div class="card" onclick="selectPorsche('usedPorsche')">
+            <img src="used.jpeg" class="card-img-top" alt="Gebrauchter Porsche">
+            <div class="card-body">
+              <input type="radio" id="usedPorsche" name="porscheType" value="used" required>
+              <label class="card-title" for="usedPorsche">Gebrauchter Porsche (100000€)</label>
+            </div>
+          </div>
+          <div class="card" onclick="selectPorsche('customPrice')">
+            <div class="card-body">
+              <input type="radio" id="customPrice" name="porscheType" value="custom" required>
+              <label class="card-title" for="customPrice">Eigener Preis</label>
+              <input type="number" class="form-control mt-2" id="customPriceInput" placeholder="Preis (in Euro)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Berechnen</button>
+    </form>
+    <div id="result" class="mt-4"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
